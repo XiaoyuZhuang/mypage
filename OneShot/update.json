@@ -1,6 +1,6 @@
 {
-  "versionCode": 6,
-  "versionName": "0.3.2",
+  "versionCode": 7,
+  "versionName": "0.3.3",
   "apkUrl": "https://raw.githubusercontent.com/XiaoyuZhuang/mypage/main/OneShot/OneShot.apk",
-  "notes": "恢复稳定 CameraX 主后端，修复启动闪退；保留极简图标、状态栏安全区、640×480 / 10 Hz 低功耗预览和应用内更新。"
+  "notes": "新增 1–120 fps 自定义预览刷新率；设置页避开状态栏；新增 0.6× Camera2 logical/physical 自动诊断与可复制错误报告；新增本地崩溃记录。主相机继续使用稳定 CameraX。"
 }
