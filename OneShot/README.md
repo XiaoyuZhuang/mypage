@@ -2,7 +2,7 @@
 
 This directory is only for OneShot update distribution.
 
-- Latest version: 0.3.2
+- Latest version: 0.3.3
 - APK: `OneShot.apk`
 - Metadata: `update.json`
 
