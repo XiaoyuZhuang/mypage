@@ -1,6 +1,6 @@
 {
-  "versionCode": 7,
-  "versionName": "0.3.3",
+  "versionCode": 8,
+  "versionName": "0.3.4",
   "apkUrl": "https://raw.githubusercontent.com/XiaoyuZhuang/mypage/main/OneShot/OneShot.apk",
-  "notes": "新增 1–120 fps 自定义预览刷新率；设置页避开状态栏；新增 0.6× Camera2 logical/physical 自动诊断与可复制错误报告；新增本地崩溃记录。主相机继续使用稳定 CameraX。"
+  "notes": "增强荣耀 0.6× 诊断：枚举 vendor Camera2 keys，并只读探测隐藏 Camera ID 2–5；更新页增加下载百分比和浏览器直接下载最新版 APK 按钮。主相机继续使用稳定 CameraX。"
 }
