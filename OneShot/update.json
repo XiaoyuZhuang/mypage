@@ -1,6 +1,6 @@
 {
-  "versionCode": 8,
-  "versionName": "0.3.4",
+  "versionCode": 9,
+  "versionName": "0.3.5",
   "apkUrl": "https://raw.githubusercontent.com/XiaoyuZhuang/mypage/main/OneShot/OneShot.apk",
-  "notes": "增强荣耀 0.6× 诊断：枚举 vendor Camera2 keys，并只读探测隐藏 Camera ID 2–5；更新页增加下载百分比和浏览器直接下载最新版 APK 按钮。主相机继续使用稳定 CameraX。"
+  "notes": "新增荣耀隐藏镜头实时测试：ID 3 超广角、ID 2@0.6×、ID 4 长焦，均带 Camera2 实时预览和可复制错误报告；主相机仍保持稳定 CameraX。"
 }
