@@ -1,6 +1,6 @@
 {
-  "versionCode": 3,
-  "versionName": "0.2.1",
+  "versionCode": 4,
+  "versionName": "0.3.0",
   "apkUrl": "https://raw.githubusercontent.com/XiaoyuZhuang/mypage/main/OneShot/OneShot.apk",
-  "notes": "改进 0.6× 超广角调用；预览降至 640×480 / 10 Hz 以降低功耗；加入设置页、检查更新、下载安装更新和固定签名。"
+  "notes": "Camera2 直连物理镜头；改进 0.6× 超广角；新增极简图标；设置按钮避开状态栏；保持 640×480 / 10 Hz 低功耗预览。"
 }
