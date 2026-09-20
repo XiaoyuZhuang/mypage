@@ -1,0 +1,40 @@
+name: Sync OneShot 0.3.1 safe
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - ".github/workflows/sync-oneshot-031-safe.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download signed OneShot release
+        shell: bash
+        env:
+          ARTIFACT_URL: "https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-e410-822f-809d-beb0c6738bc4/raw?se=2026-09-20T12%3A32%3A56Z&sp=r&sv=2026-02-06&sr=b&scid=dcd4252d-6857-5037-a580-1690a5ff46c4&skoid=3e273c3d-5ea1-4088-9e18-79685531b184&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-20T01%3A33%3A22Z&ske=2026-09-21T01%3A33%3A22Z&sks=b&skv=2026-02-06&sig=uzyhapajcMJbBEOWzxjTQ9qj%2BXgVrGv/2RjNILpATBU%3D"
+        run: |
+          set -euo pipefail
+          curl -fL "$ARTIFACT_URL" -o /tmp/oneshot.zip
+          mkdir -p OneShot
+          unzip -jo /tmp/oneshot.zip "OneShot.apk" "update.json" -d OneShot
+          test -s OneShot/OneShot.apk
+          test -s OneShot/update.json
+
+      - name: Commit update files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add OneShot/OneShot.apk OneShot/update.json
+          git commit -m "publish OneShot 0.3.1 startup fix"
+          git push
