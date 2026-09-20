@@ -1,0 +1,40 @@
+name: Seed OneShot APK
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - ".github/workflows/seed-oneshot.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  seed:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download signed OneShot artifact
+        shell: bash
+        env:
+          ARTIFACT_URL: "https://sdmntprkoreacentral.oaiusercontent.com/files/00000000-d230-8206-8bee-d0695cee51d1/raw?se=2026-09-20T12%3A03%3A26Z&sp=r&sv=2026-02-06&sr=b&scid=e57045d6-fd08-5e0e-a7e3-c73d82212a8a&skoid=3e273c3d-5ea1-4088-9e18-79685531b184&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-20T02%3A24%3A28Z&ske=2026-09-21T02%3A24%3A28Z&sks=b&skv=2026-02-06&sig=YMEgLlQVF0mMHnsNNh/3Z9w39piJcQEhdkkikjYMPCI%3D"
+        run: |
+          set -euo pipefail
+          curl -fL "$ARTIFACT_URL" -o /tmp/oneshot.zip
+          mkdir -p OneShot
+          unzip -jo /tmp/oneshot.zip "OneShot.apk" -d OneShot
+          test -s OneShot/OneShot.apk
+          ls -lh OneShot/OneShot.apk
+
+      - name: Commit APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add OneShot/OneShot.apk
+          git commit -m "publish OneShot 0.2.1 APK"
+          git push
